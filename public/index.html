@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>CaptureNow</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/images/CaptureNow.png" rel="icon">
+    <link href="./images/CaptureNow.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="./assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Add this script tag to include Flickity from the CDN -->
+    <script src="https://unpkg.com/flickity@2.2.2/dist/flickity.pkgd.min.js"></script>
+    <!-- Template Main CSS File -->
+    <link href="./assets/css/main.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/home.css"> -->
+    <link rel="stylesheet" href="./css/cards.css">
+    <link rel="stylesheet" href="./css/searchBar.css">
+    <link rel="stylesheet" href="css/loding.css">
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center" style="justify-content: space-around;">
+            <div class=" d-flex align-items-center me-auto me-lg-0">
+                <a href="index.html">
+                    <img src="./images/CaptureNow.png" alt="" width="45vw" id="image-anime">
+                </a>
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <!-- <li>
+                        <div class="search-box-loc form-outline" id="search-autocomplete">
+                            <label for="inputLoc"><img src="./images/location.png" alt="" width="25vw"></label>&nbsp;
+                            <input type="text" class="search-input" id="inputLoc" placeholder="Search by location">
+                            <div class="dropdown-menu" id="autocompleteResults" aria-labelledby="inputLoc">
+                                
+                            </div>
+                        </div>
+                    </li> -->
+                    <li>
+                        <div class="search-box form-outline" id="search-autocomplete">
+                            <label for="inputPre"><img src="./images/search.png" alt="" width="25vw"></label>&nbsp;
+                            <input type="text" class="search-input" id="inputPre" placeholder="Search by preferences">
+                            <div class="dropdown-menu" id="autocompleteResultsPre" aria-labelledby="inputPre">
+                                <!-- Results will be dynamically added here -->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav><!-- .navbar -->
+
+            <div class="buttons d-flex align-items-center">
+                <!-- Button trigger modal -->
+                <!-- signup modal -->
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Signup
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false"
+                    tabindex="-1" aria-hidden="true" aria-modal="true">
+                    <div class="modal-dialog modal-dialog-centered" aria-hidden="true">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: yellow;">
+                                <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3 needs-validation" id="signup-form"
+                                    style="justify-content: space-around;" novalidate>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Name"
+                                            required>
+                                        <div class="error"></div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email"
+                                            required>
+                                        <div class="error"></div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="tel" class="form-control" id="inputphone"
+                                            placeholder="Phone number" required>
+                                        <div class="error"></div>
+                                    </div>
+
+                                    <div class="col-md-10">
+                                        <input type="password" name="pass" class="form-control" id="inputPassword1"
+                                            placeholder="Enter a new password" required>
+                                        <div class="error"></div>
+                                        <img src="images/eye-closed.png" alt=""
+                                            onclick="togglePassword1('inputPassword1')" id="eye-icon" width="20px"
+                                            height="20px" style="cursor: pointer;">
+
+                                    </div>
+
+                                    <div class="col-md-10">
+                                        <input type="password" name="re_pass" class="form-control" id="password_confirm"
+                                            placeholder="Re Enter Password">
+                                        <div class="error"></div>
+                                        <img src="images/eye-closed.png" alt=""
+                                            onclick="togglePassword2('password_confirm')" id="eye-icon2" width="20px"
+                                            height="20px" style="cursor: pointer;">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                                            <label class="form-check-label" for="gridCheck">
+                                                Accept:<a href="/footer/terms-&-conditions.html" style="color: rgb(47, 47, 47);">
+                                                    terms and conditions</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer" style="background-color: yellow;">
+                                <button type="submit" id="submit" class="btn btn-sm btn-dark">Sign up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- verify modal -->
+                <div class="modal fade" id="verifyModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-bs-backdrop="false">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: yellow;">
+                                <h5 class="modal-title" id="verifyModallable">verify your email</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3" id="verifyForm" style="justify-content: space-around;">
+                                    <div class="col-md-10">
+                                        <label for="verifyotp" class="form-label">OTP</label>
+                                        <input type="text" class="form-control" id="verifyotp">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" id="verify" class="btn btn-sm btn-dark">verify</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                &nbsp; &nbsp; &nbsp;
+                <!-- signin modal -->
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal2">
+                    Signin
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-bs-backdrop="false">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: yellow;">
+                                <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3" id="signupForm" style="justify-content: space-around;">
+                                    <div class="col-md-10">
+                                        <label for="inputEmails" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="inputEmails" required>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="inputPassword" class="form-label">Password</label>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <input type="password" class="form-control" id="inputPassword" required>
+                                            <img src="images/eye-closed.png" alt=""
+                                                onclick="togglePassword('inputPassword')" id="eye-icon3" width="20px"
+                                                height="20px" style="cursor: pointer;">
+                                        </div>
+                                    </div>
+                                    <p><a href="user-profile/forgot-password.html" style="color: black;">Forgot
+                                            Password</a></p>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer" style="background-color: yellow;">
+                                <p>New to CaptureNow? <a href="signup.html" style="color: blue;">Register Now</a>
+                                </p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="submit" id="signin" class="btn btn-sm btn-dark"
+                                    data-bs-dismiss="modal">Signin</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <i class="mobile-nav-toggle mobile-nav-show bi bi-search"></i>
+
+            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+        <section class="mid-part">
+
+            <div class="categories-section">
+
+                <button class="btn btn-dark btn-sm" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#addFilter" aria-controls="offcanvasExample" id="filter-btn">
+                    <!-- <span><img src="images/hamburger-w.png" alt="" width="12px" height="15px"
+                style="margin-bottom: 4px;"></span> -->
+                    <p>Filters</p>
+                </button>
+
+                
+                <!-- categories section -->
+                <div id="categories">
+                    <!-- filters modal -->
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="addFilter" aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header" style="background-color: yellow;">
+                            <h3 class="offcanvas-title" id="offcanvasExampleLabel">FILTERS</h3>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div>
+                                <br><br>
+                                <!-- <h5>Location:</h5>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptionsLocation"
+                                        id="inlineRadio1" value="option1" />
+                                    <label class="form-check-label" for="inlineRadioOptionsLocation">near me</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptionsLocation"
+                                        id="inlineRadio2" value="option2" />
+                                    <label class="form-check-label" for="inlineRadioOptionsLocation">Anywhere</label>
+                                </div>
+                                <br /><br /> -->
+                                <br>
+                                <h5>Sort By:</h5>
+                                <h6>cost:</h6>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="0" />
+                                    <label class="form-check-label" for="inlineRadioOptionsCost">LOW TO HIGH</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="1" />
+                                    <label class="form-check-label" for="inlineRadioOptionsCost">HIGH TO LOW</label>
+                                </div>
+                                <br /><br />
+                                <h6>ratings:</h6>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio3" value="2" />
+                                    <label class="form-check-label" for="inlineRadioOptionsRating">LOW TO HIGH</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio4" value="3" />
+                                    <label class="form-check-label" for="inlineRadioOptionsRating">HIGH TO LOW</label>
+                                </div>
+                            </div>
+                            <br><br>
+                            <center><button class="btn btn-dark btn-sm" id="applyFilter"
+                                data-bs-dismiss="offcanvas">Apply</button></center>
+                        </div>
+                    </div>
+                    <div class="recomend-item">
+                        <a href="#" id="wedding">
+                            <center> <img src="./images/wedding-couple_706439.png" alt="" class="icon"></center>
+                            <p>Wedding</p>
+                        </a>
+                    </div>
+                    <div class="recomend-item">
+                        <a href="#" id="portrait">
+                            <center> <img src="./images/face-id_4882591.png" alt="" class="icon"></center>
+                            <p>Portrait</p>
+                        </a>
+                    </div>
+                    <div class="recomend-item">
+                        <a href="#" id="landscape">
+                            <center><img src="./images/nature_3061507.png" alt="" class="icon"></center>
+                            <p>Landscape</p>
+                        </a>
+                    </div>
+                    <div class="recomend-item">
+                        <a href="#" id="fashion">
+                            <center><img src="./images/sir_349376.png" alt="" class="icon"></center>
+                            <p>Fashion</p>
+                        </a>
+                    </div>
+                    <div class="recomend-item">
+                        <a href="#" id="wildlife">
+                            <center><img src="./images/forest_5640204.png" alt="" class="icon"></center>
+                            <p>Wildlife</p>
+                        </a>
+                    </div>
+                    <div class="recomend-item">
+                        <a href="#" id="sports">
+                            <center><img src="./images/sports_4163679.png" alt="" class="icon"></center>
+                            <p>Sports</p>
+                        </a>
+                    </div>
+                    <div class="recomend-item">
+                        <a href="#" id="food">
+                            <center><img src="./images/restaurant_562678.png" alt="" class="icon"></center>
+                            <p>Food</p>
+                        </a>
+                    </div>
+                    <div class="recomend-item">
+                        <a href="#" id="product">
+                            <center><img src="./images/product-development_8787046.png" alt="" class="icon"></center>
+                            <p>Product</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="banner">
+                <!-- to be added later -->
+            </div>
+
+            <!-- recomendation section -->
+            <br>
+            <h5 style="margin-left: 10vw;">You Might Like</h5><br>
+            <div class="recommendations">
+                <div id="emptyData"></div
+                <!-- cards -->
+                <div class="loader"></div>
+            </div>
+
+            <!-- Book me modal -->
+            <div class="modal fade" id="BookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: yellow;">
+                            <h5 class="modal-title" id="exampleModalLabel">Booking <p id="photographerName"></p>
+                            </h5><span></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>packages</h4>
+                            <div class="carousel" data-flickity='{ "wrapAround": true }'>
+                                <!-- JavaScript will populate the carousel items here -->
+                            </div>
+                            <div class="book-form">
+                                <form class="row g-3">
+                                    <div class="col-md-10">
+                                        <label for="Form" class="form-label">Schedule From</label>
+                                        <input type="datetime-local" class="form-control" id="From">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="Till" class="form-label">Schedule Till</label>
+                                        <input type="datetime-local" class="form-control" id="Till">
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer" style="background-color: yellow;">
+                            <div class="col-12">
+                                <button type="submit" id="book" class="btn btn-dark"
+                                    data-bs-dismiss="modal">Book</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </section>
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+
+        <div class="container">
+
+            <div class="row gy-3">
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div class="footer-col">
+                        <h4 style="margin-left: 20px;">Occasions</h4>
+                        <ul>
+                            <li><a href="#" id="wedding-foot">Wedding</a></li>
+                            <li><a href="#" id="pre-wedding-foot">Pre Wedding</a></li>
+                            <li><a href="#" id="maternity-foot">Maternity</a></li>
+                            <li><a href="#" id="baby&kids-foot">Baby & Kids</a></li>
+                            <li><a href="#" id="vacation-foot">Vacation</a></li>
+                            <li><a href="#" id="parties-foot">Parties</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div class="footer-col">
+                        <h4 style="margin-left: 17px;">Business</h4>
+                        <ul>
+                            <li><a href="#" id="food-foot">Food</a></li>
+                            <li><a href="#" id="interior-foot">Interior</a></li>
+                            <li><a href="#" id="product-foot">Product Shoot</a></li>
+                            <li><a href="#" id="corporate-foot">Corporate Event</a></li>
+                            <li><a href="#" id="brand-foot">Brand Video</a></li>
+                            <li><a href="#" id="profile-foot">Profile and Headshot</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div class="footer-col">
+                        <h4>About CaptureNow</h4>
+                        <ul>
+                            <li><a href="/footer/about.html">Who we are</a></li>
+                            <li><a href="/join-as-photographer.html">Join as a photographer</a></li>
+                            <li><a href="/footer/Contact-Us.html">Contact Us</a></li>
+                            <li><a href="#">Report</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Follow Us</h4>
+                    <div class="social-links d-flex">
+                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <i class="bi bi-geo-alt icon"></i>
+                    <div>
+                        <h4>Address</h4>
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links d-flex">
+                    <i class="bi bi-telephone icon"></i>
+                    <div>
+                        <h4>Contact us</h4>
+                        <p>
+                            <strong>Phone:</strong> +91 9008830298<br>
+                            <strong>Email:</strong> info@capturenow.com<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>CaptureNow</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by <a href="#">TRiSH_AjT</a>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+    <!-- End Footer -->
+
+    <!-- Loding indicator -->
+    <div class="loading-container">
+        <div class="loading"></div>
+    </div>
+
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="js/global.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/vendor/aos/aos.js"></script>
+    <script src="./assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="./assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="./assets/js/main.js"></script>
+    <script>
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        function logOut() {
+            localStorage.removeItem('user');
+            localStorage.clear();
+        }
+
+    </script>
+    <script src="js/index.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/verify.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/passwordToggle.js"></script>
+    <script src="js/signupscrip.js"></script>
+    <script src="js/categories.js"></script>
+
+</body>
+
+</html>
