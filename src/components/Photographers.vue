@@ -108,25 +108,9 @@ export default {
     margin-bottom: 20px;
 }
 
-.card {
-    /* Add card styles */
-}
-
-.card-body {
-    /* Add card-body styles */
-}
-
-.card-img {
-    /* Add card-img styles */
-}
-
 .card-img-top {
     width: 100%;
     height: auto;
-}
-
-.card-info {
-    /* Add card-info styles */
 }
 
 .card-name {
@@ -145,11 +129,4 @@ export default {
     align-items: center;
 }
 
-.card-footer {
-    /* Add card-footer styles */
-}
-
-.price-range {
-    /* Add price-range styles */
-}
 </style>
