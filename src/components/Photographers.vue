@@ -55,7 +55,7 @@ export default {
             let offset = 0;
             let pageSize = 10;
 
-            fetch(`http://localhost:8080/customer/getPhotographersIndex/${offset}/${pageSize}`, {
+            fetch(`https://capturenow.onrender.com/customer/getPhotographersIndex/${offset}/${pageSize}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
