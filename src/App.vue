@@ -1,7 +1,7 @@
 <template>
   <Header />
   <Photographers />
-  <MainContent />
+  <!-- <MainContent /> -->
   <!-- <Footer />  -->
 </template>
 

@@ -42,15 +42,16 @@ import LoginInPopup from './LogInPopup.vue';
         margin-top: 0%;
         display: flex;
         align-items: center;
-        width: 400px;
+        width: 370px;
         height: 50px;
         margin-top: 10px;
         background-color: yellow;
         justify-content: space-around;
         border-radius: 5px;
+        padding: 10px;
     }
     #home{
-        width: 32px;
+        width: 35px;
     }
 }
 </style>

@@ -40,13 +40,6 @@ import { ref } from "vue";
 
 const password = ref(null);
 
-import Password from 'primevue/password';
-
-import Dialog from 'primevue/dialog';
-import Button from "primevue/button";
-
-import InputText from 'primevue/inputtext';
-
 import FloatLabel from 'primevue/floatlabel';
 
 import Tabs from 'primevue/tabs';
@@ -63,5 +56,8 @@ const visible = ref(false);
 <style scoped>
 #login-btn{
     height: 40px;
+}
+.p-tablist-tab-list{
+    justify-content: space-between;
 }
 </style>

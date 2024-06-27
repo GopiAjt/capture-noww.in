@@ -4,13 +4,11 @@
         <div class="loader" v-if="loading"></div>
         <div v-else>
             <div v-for="photographer in photographers" :key="photographer.id" class="ele">
-                <Card style="width: 25rem; overflow: hidden">
+                <Card class="card">
                     <template #header>
-                        <a style="cursor: pointer" @click="alertLogin">
-                            <img 
-                                :src="photographer.profilePhoto ? `data:image/jpeg;base64,${photographer.profilePhoto}` : '/images/default_profile.png'"
-                                class="card-img-top" alt="Photographer Image" 
-                            />
+                        <a class="img-a" @click="alertLogin">
+                            <img :src="photographer.profilePhoto ? `data:image/jpeg;base64,${photographer.profilePhoto}` : '/images/default_profile.png'"
+                                class="card-img-top" alt="Photographer Image" />
                         </a>
                     </template>
                     <template #title>
@@ -28,7 +26,7 @@
                         <div class="card-info-style">{{ photographer.languages }}</div>
                     </template>
                     <template #footer>
-                        <div class="flex gap-4 mt-1">
+                        <div class="flex gap-4 mt-1 footer-div">
                             <div class="price-range">Starts with: {{ photographer.startsWith }}</div>
                             <Button label="Book Me" class="p-button-sm p-button-dark" @click="alertLogin" />
                         </div>
@@ -63,15 +61,15 @@ export default {
                     'Content-Type': 'application/json',
                 }
             })
-            .then(response => response.json())
-            .then(data => {
-                photographers.value = data.content;
-                loading.value = false;
-            })
-            .catch(error => {
-                console.error('Error fetching photographers:', error);
-                loading.value = false;
-            });
+                .then(response => response.json())
+                .then(data => {
+                    photographers.value = data.content;
+                    loading.value = false;
+                })
+                .catch(error => {
+                    console.error('Error fetching photographers:', error);
+                    loading.value = false;
+                });
         };
 
         const alertLogin = (event) => {
@@ -94,9 +92,20 @@ export default {
 
 <style scoped>
 .recommendations {
-    margin-left: 10px;
-    margin-right: 10px;
     margin-top: 20px;
+}
+.p-card-header{
+    width: 50px;
+}
+.p-img {
+    display: flex;
+}
+
+.card {
+    width: 60rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
 }
 
 .loader {
@@ -108,8 +117,13 @@ export default {
     margin-bottom: 20px;
 }
 
+.img-a{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
 .card-img-top {
-    width: 100%;
+    width: 60%;
     height: auto;
 }
 
@@ -128,5 +142,23 @@ export default {
     display: flex;
     align-items: center;
 }
+.footer-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width: 575px) {
+    .card {
+        width: 23rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
 
+    .card-img-top {
+        width: 70%;
+        height: auto;
+        margin-top: 30px;
+    }
+}
 </style>
