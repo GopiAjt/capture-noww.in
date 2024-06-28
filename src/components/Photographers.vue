@@ -108,13 +108,6 @@ export default {
     margin-bottom: 20px;
 }
 
-.card {
-    /* Add card styles */
-}
-
-.card-body {
-    /* Add card-body styles */
-}
 
 .card-img-top {
     width: 100%;
@@ -125,10 +118,6 @@ export default {
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
-}
-
-.card-footer {
-    /* Add card-footer styles */
 }
 
 .price-range {
