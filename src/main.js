@@ -15,6 +15,9 @@ import Tab from 'primevue/tab';
 import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
 
+import FocusTrap from 'primevue/focustrap';
+
+
 const app = createApp(App);
 
 app.use(PrimeVue, {
@@ -23,6 +26,7 @@ app.use(PrimeVue, {
     }
 });
 
+app.directive('focustrap', FocusTrap);
 
 app.component('InputText', InputText);
 app.component('Button', Button);

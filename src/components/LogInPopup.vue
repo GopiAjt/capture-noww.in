@@ -1,6 +1,7 @@
 <template>
     <div class="card flex justify-center">
-        <Button label="Log In" @click="visible = true" id="login-btn" />
+        <Button label="Log In" @click="visible = true" id="login-btn" 
+        :style="{ backgroundColor: 'yellow', borderColor: 'black' }"/>
         <Dialog v-model:visible="visible" header="CaptureNoww" modal :style="{ width: '25rem' }">
 
             <div class="card">
@@ -55,7 +56,7 @@ const visible = ref(false);
 
 <style scoped>
 #login-btn{
-    height: 40px;
+    height: 35px;
 }
 .p-tablist-tab-list{
     justify-content: space-between;

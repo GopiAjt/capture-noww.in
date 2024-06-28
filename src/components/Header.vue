@@ -1,12 +1,15 @@
 <script setup>
-
 import SearchBar from './SearchBar.vue';
-import Button from "primevue/button";
 import LoginInPopup from './LogInPopup.vue';
-</script>
 
+</script>
+<script>
+export default {
+  name: 'StickyComponent'
+}
+</script>
 <template>
-    <div id="navbar">
+    <div id="navbar" style="position: sticky;">
         <img src="/src/assets/images/CaptureNow.png" alt="" id="home" width="45vw">
         <div id="search-bar">
             <SearchBar />
@@ -29,6 +32,8 @@ import LoginInPopup from './LogInPopup.vue';
     background-color: yellow;
     justify-content: space-around;
     border-radius: 5px;
+    position: sticky;
+    top: 0;
 }
 
 #search-bar {

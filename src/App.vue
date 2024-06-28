@@ -2,7 +2,7 @@
   <Header />
   <Photographers />
   <!-- <MainContent /> -->
-  <!-- <Footer />  -->
+  <Footer></Footer> 
 </template>
 
 <script setup>
