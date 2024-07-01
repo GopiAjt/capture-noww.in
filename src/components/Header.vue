@@ -1,18 +1,60 @@
 <script setup>
 import SearchBar from './SearchBar.vue';
 import LoginInPopup from './LogInPopup.vue';
+import Photographers from './Photographers.vue';
 
 </script>
 <script>
+
 export default {
-  name: 'StickyComponent'
-}
+    components: {
+        SearchBar,
+        Photographers
+    },
+    setup() {
+        const photographers = ref([]);
+        const loading = ref(true);
+
+        const fetchPhotographers = (offset = 0, pageSize = 10) => {
+            fetch(`http://localhost:8080/customer/getPhotographersIndex/${offset}/${pageSize}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    photographers.value = data.content;
+                    loading.value = false;
+                })
+                .catch(error => {
+                    console.error('Error fetching photographers:', error);
+                    loading.value = false;
+                });
+        };
+
+        const updatePhotographers = (data) => {
+            photographers.value = data;
+            loading.value = false;
+        };
+
+        onMounted(() => {
+            fetchPhotographers();
+        });
+
+        return {
+            photographers,
+            loading,
+            updatePhotographers
+        };
+    }
+};
 </script>
 <template>
     <div id="navbar" style="position: sticky;">
         <img src="/src/assets/images/CaptureNow.png" alt="" id="home" width="45vw">
         <div id="search-bar">
-            <SearchBar />
+            <SearchBar @searchResults="updatePhotographers" />
         </div>
         <div>
             <LoginInPopup />
@@ -55,8 +97,9 @@ export default {
         border-radius: 5px;
         padding: 10px;
     }
-    #home{
-        width: 35px;
+
+    #home {
+        width: 40px;
     }
 }
 </style>

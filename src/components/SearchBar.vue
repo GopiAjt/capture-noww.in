@@ -4,11 +4,11 @@
             <i class="bi bi-search"></i>
         </label>&nbsp;
         <input type="text" class="search-input" id="inputPre" placeholder="Search by preferences" v-model="searchQuery"
-            @input="updateResults" @keyup.enter="fetchResults" ref="searchInputPre" />
+            @keyup.enter="fetchResults" ref="searchInputPre" />
         <div class="dropdown-menu" id="autocompleteResultsPre" aria-labelledby="inputPre"
             v-if="filteredPreparations.length">
             <button v-for="preparation in filteredPreparations" :key="preparation" class="dropdown-item"
-                @click="selectPreparation(preparation)" role="option" aria-selected="false">
+                @click="selectPreparation(preparation)" role="option" :aria-selected="searchQuery === preparation">
                 {{ preparation }}
             </button>
         </div>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, defineEmits } from 'vue';
 
 const searchQuery = ref('');
 const preparations = [
@@ -51,15 +51,11 @@ const filteredPreparations = computed(() => {
     );
 });
 
-const updateResults = () => {
-    // This function will be called on input, and it will update the filteredPreparations computed property
-    // Actually, the computed property filteredPreparations automatically updates when searchQuery changes,
-    // so this function does not need to do anything in this case.
-};
-
 const selectPreparation = (preparation) => {
     searchQuery.value = preparation;
 };
+
+const emit = defineEmits(['searchResults']);
 
 const fetchResults = async () => {
     if (!searchQuery.value) return;
@@ -67,7 +63,7 @@ const fetchResults = async () => {
     let pageSize = 10;
     console.log('Search query:', searchQuery.value);
     try {
-        const response = await fetch(`/api/customer/searchByPreference?pre=${encodeURIComponent(searchQuery.value)}&offset=${offset}&pageSize=${pageSize}`, {
+        const response = await fetch(`http://localhost:8080/customer/searchByPreference?pre=${searchQuery.value}&offset=${offset}&pageSize=${pageSize}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,9 +86,10 @@ const fetchResults = async () => {
 
         const data = await response.json();
         console.log('Search results:', data);
-        // Handle the search results as needed
+        emit('searchResults', data); // Emit the search results
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
+        // You might want to set some state here to show an error message to the user
     }
 };
 </script>
@@ -178,7 +175,7 @@ const fetchResults = async () => {
 
 @media (max-width: 575px) {
     .search-box {
-        width: 60vw;
+        width: 50vw;
     }
 
     .search-input {

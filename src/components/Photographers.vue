@@ -2,7 +2,7 @@
     <div class="recommendations">
         <div v-if="loading" class="loader"></div>
         <div v-else>
-            <div v-if="photographers.length === 0" id="emptyData">No photographers found.</div>
+            <div v-if="!photographers || photographers.length === 0" id="emptyData">No photographers found.</div>
             <div v-for="photographer in photographers" :key="photographer.id" class="ele">
                 <Card style="width: 21rem; overflow: hidden">
                     <template #header>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { defineProps } from 'vue';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
 
@@ -50,43 +50,24 @@ export default {
         Button,
         Card
     },
+    props: {
+        photographers: {
+            type: Array,
+            required: true,
+            default: () => []
+        },
+        loading: {
+            type: Boolean,
+            required: true
+        }
+    },
     setup() {
-        const photographers = ref([]);
-        const loading = ref(true);
-
-        const fetchPhotographers = () => {
-            let offset = 0;
-            let pageSize = 10;
-
-            fetch(`http://localhost:8080/customer/getPhotographersIndex/${offset}/${pageSize}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                photographers.value = data.content;
-                loading.value = false;
-            })
-            .catch(error => {
-                console.error('Error fetching photographers:', error);
-                loading.value = false;
-            });
-        };
-
         const alertLogin = (event) => {
             event.preventDefault();
             window.alert('Please Login to see a photographer');
         };
 
-        onMounted(() => {
-            fetchPhotographers();
-        });
-
         return {
-            photographers,
-            loading,
             alertLogin
         };
     }
@@ -94,7 +75,6 @@ export default {
 </script>
 
 <style scoped>
-
 .recommendations {
     margin: 20px 10px;
 }
@@ -107,7 +87,6 @@ export default {
 .ele {
     margin-bottom: 20px;
 }
-
 
 .card-img-top {
     width: 100%;

@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <Photographers />
+  <Photographers :photographers="filteredPhotographers"/>
   <!-- <MainContent /> -->
   <Footer></Footer> 
 </template>
